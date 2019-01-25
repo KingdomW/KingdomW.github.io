@@ -73,6 +73,8 @@
 
 
 
+  
+
 
   <link rel="alternate" href="/atom.xml" title="KingdomW" type="application/atom+xml">
 
@@ -318,15 +320,8 @@
           
 
   
-    <div class="comments" id="comments">
-      <div id="disqus_thread">
-        <noscript>
-          Please enable JavaScript to view the
-          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
-        </noscript>
-      </div>
+    <div id="gitalk-container">
     </div>
-
   
 
 
@@ -615,26 +610,6 @@
 
   
 
-    
-      <script id="dsq-count-scr" src="https://cemment.disqus.com/count.js" async></script>
-    
-
-    
-      <script type="text/javascript">
-        var disqus_config = function () {
-          this.page.url = 'http://KingdomW.github.io/about/index.html';
-          this.page.identifier = 'about/index.html';
-          this.page.title = 'about';
-        };
-        var d = document, s = d.createElement('script');
-        s.src = 'https://cemment.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', '' + +new Date());
-        (d.head || d.body).appendChild(s);
-      </script>
-    
-
-  
-
 
 
 
@@ -650,6 +625,7 @@
 
 
 
+  
 
 
 
@@ -657,6 +633,25 @@
 
 
 
+
+
+
+
+
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+   <script type="text/javascript">
+        var gitalk = new Gitalk({
+          clientID: '522ae7697b981d636492',
+          clientSecret: '23c2a26f8ed4013860021b45ead13cda9b864f08',
+          repo: 'KingdomW.github.io',
+          owner: 'KingdomW',
+          admin: ['KingdomW'],
+          id: location.pathname,
+          distractionFreeMode: 'true'
+        })
+        gitalk.render('gitalk-container')           
+       </script>
 
 
   
