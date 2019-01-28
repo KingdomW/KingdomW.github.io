@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[first]]></title>
-    <url>%2F2019%2F01%2F24%2Ffirst%2F</url>
-    <content type="text"><![CDATA[Hello everyone,欢迎来造访我的博客！]]></content>
+    <title><![CDATA[分治法(Divide and Conquer)]]></title>
+    <url>%2F2019%2F01%2F25%2F%E5%88%86%E6%B2%BB%E6%B3%95(Divide%20and%20Conquer)%2F</url>
+    <content type="text"><![CDATA[分治法就是把一个复杂的问题分成两个或更多的相同或相似的子问题，再把子问题分成更小的子问题……直到最后子问题可以简单的直接求解，原问题的解即子问题的解的合并。 分治法典型应用 快速排序(QuickSort) 归并排序(MergeSort) 统计逆序数(CountingInversion) 平面最近点对(ClosestPair) 注意: 蛮力算法处理达到多项式时间的问题用分治法可以有效地降低处理时间。例如：用蛮力算法解决ClosestPair问题时间复杂度为$O(n^2)$，而采用分治法时间复杂度可以降低为O(nlogn)。 结合随机抽样的分治法也可以有效的降低时间复杂度。 分治法的三大步骤 Divide： 将原问题划分为多个子问题 Conquer： 采用递归方法解决所划分的子问题 Combine： 将子问题的解合并成为原始问题的解 具体方法要看能否采用分治的方法来解决所遇到的问题，首要的思路就是要看问题的输入以及输出。首先要观察问题的输入部分，看是否能够将原始问题分解为具有相同结构但是更小的子问题。通常问题的输入部分如果是以下集中数据结构的话是很容易将原始问题分解为子问题的。 n个元素的数组 矩阵 n个元素的集和 树 有向无环图 普通图 接下来要观察问题的输出部分，想办法将容易求解出的子问题的解组合构成原问题的解。]]></content>
       <categories>
-        <category>other</category>
+        <category>算法</category>
+        <category>分治法</category>
       </categories>
       <tags>
-        <tag>other</tag>
+        <tag>算法</tag>
+        <tag>分治法</tag>
       </tags>
   </entry>
   <entry>
