@@ -1,0 +1,1517 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="算法,分治法,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="KingdomW" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="分治法就是把一个复杂的问题分成两个或更多的相同或相似的子问题，再把子问题分成更小的子问题……直到最后子问题可以简单的直接求解，原问题的解即子问题的解的合并。  分治法典型应用 快速排序(QuickSort) 归并排序(MergeSort) 统计逆序数(CountingInversion) 平面最近点对(ClosestPair)  注意:  蛮力算法处理达到多项式时间的问题用分治法可以有效地降低处理">
+<meta name="keywords" content="算法,分治法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="分治法-Divide and Conquer">
+<meta property="og:url" content="http://KingdomW.github.io/2020/02/15/分治法-Divide and Conquer/index.html">
+<meta property="og:site_name" content="KingdomW">
+<meta property="og:description" content="分治法就是把一个复杂的问题分成两个或更多的相同或相似的子问题，再把子问题分成更小的子问题……直到最后子问题可以简单的直接求解，原问题的解即子问题的解的合并。  分治法典型应用 快速排序(QuickSort) 归并排序(MergeSort) 统计逆序数(CountingInversion) 平面最近点对(ClosestPair)  注意:  蛮力算法处理达到多项式时间的问题用分治法可以有效地降低处理">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://kingdomw.github.io/2020/02/15/分治法-Divide%20and%20Conquer/markdown-img-paste-20190128165634170.png">
+<meta property="og:image" content="http://kingdomw.github.io/2020/02/15/分治法-Divide%20and%20Conquer/markdown-img-paste-20190128172050106.png">
+<meta property="og:image" content="http://kingdomw.github.io/2020/02/15/分治法-Divide%20and%20Conquer/markdown-img-paste-20190128174110331.png">
+<meta property="og:image" content="http://kingdomw.github.io/2020/02/15/分治法-Divide%20and%20Conquer/markdown-img-paste-20190128175150117.png">
+<meta property="og:image" content="http://kingdomw.github.io/2020/02/15/分治法-Divide%20and%20Conquer/markdown-img-paste-20190128183003770.png">
+<meta property="og:image" content="http://kingdomw.github.io/2020/02/15/分治法-Divide%20and%20Conquer/markdown-img-paste-20190128183206936.png">
+<meta property="og:image" content="http://kingdomw.github.io/2020/02/15/分治法-Divide%20and%20Conquer/markdown-img-paste-20190128183320337.png">
+<meta property="og:image" content="http://kingdomw.github.io/2020/02/15/分治法-Divide%20and%20Conquer/markdown-img-paste-20190128222047876.png">
+<meta property="og:image" content="http://kingdomw.github.io/2020/02/15/分治法-Divide%20and%20Conquer/markdown-img-paste-20190128215718724.png">
+<meta property="og:image" content="http://kingdomw.github.io/2020/02/15/分治法-Divide%20and%20Conquer/markdown-img-paste-20190225203719922.png">
+<meta property="og:image" content="http://kingdomw.github.io/2020/02/15/分治法-Divide%20and%20Conquer/markdown-img-paste-20190225204921163.png">
+<meta property="og:image" content="http://kingdomw.github.io/2020/02/15/分治法-Divide%20and%20Conquer/markdown-img-paste-20190225205157747.png">
+<meta property="og:image" content="http://kingdomw.github.io/2020/02/15/分治法-Divide%20and%20Conquer/markdown-img-paste-20190225205548905.png">
+<meta property="og:image" content="http://kingdomw.github.io/2020/02/15/分治法-Divide%20and%20Conquer/markdown-img-paste-20190225210214495.png">
+<meta property="og:image" content="http://kingdomw.github.io/2020/02/15/分治法-Divide%20and%20Conquer/markdown-img-paste-2019022521074168.png">
+<meta property="og:image" content="http://kingdomw.github.io/2020/02/15/分治法-Divide%20and%20Conquer/markdown-img-paste-20190225211701102.png">
+<meta property="og:image" content="http://kingdomw.github.io/2020/02/15/分治法-Divide%20and%20Conquer/markdown-img-paste-20190225211848917.png">
+<meta property="og:image" content="http://kingdomw.github.io/2020/02/15/分治法-Divide%20and%20Conquer/markdown-img-paste-20190225211943716.png">
+<meta property="og:image" content="http://kingdomw.github.io/2020/02/15/分治法-Divide%20and%20Conquer/markdown-img-paste-20190225212042137.png">
+<meta property="og:updated_time" content="2019-02-25T13:27:50.240Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="分治法-Divide and Conquer">
+<meta name="twitter:description" content="分治法就是把一个复杂的问题分成两个或更多的相同或相似的子问题，再把子问题分成更小的子问题……直到最后子问题可以简单的直接求解，原问题的解即子问题的解的合并。  分治法典型应用 快速排序(QuickSort) 归并排序(MergeSort) 统计逆序数(CountingInversion) 平面最近点对(ClosestPair)  注意:  蛮力算法处理达到多项式时间的问题用分治法可以有效地降低处理">
+<meta name="twitter:image" content="http://kingdomw.github.io/2020/02/15/分治法-Divide%20and%20Conquer/markdown-img-paste-20190128165634170.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"whirlIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'KingdomW'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://KingdomW.github.io/2020/02/15/分治法-Divide and Conquer/">
+
+
+
+
+
+  <title>分治法-Divide and Conquer | KingdomW</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">KingdomW</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://KingdomW.github.io/2020/02/15/分治法-Divide and Conquer/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="KingdomW">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="KingdomW">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">分治法-Divide and Conquer</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-15T17:32:04+08:00">
+                2020-02-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法/分治法/" itemprop="url" rel="index">
+                    <span itemprop="name">分治法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2020/02/15/分治法-Divide and Conquer/" class="leancloud_visitors" data-flag-title="分治法-Divide and Conquer">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3.6k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  16
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote class="blockquote-center"><p><strong>分治法</strong>就是把一个复杂的问题分成两个或更多的相同或相似的子问题，再把子问题分成更小的子问题……直到最后子问题可以简单的直接求解，原问题的解即子问题的解的合并。</p>
+</blockquote>
+<h1 id="分治法典型应用"><a href="#分治法典型应用" class="headerlink" title="分治法典型应用"></a>分治法典型应用</h1><ul>
+<li><strong>快速排序(QuickSort)</strong></li>
+<li><strong>归并排序(MergeSort)</strong></li>
+<li><strong>统计逆序数(CountingInversion)</strong></li>
+<li><strong>平面最近点对(ClosestPair)</strong></li>
+</ul>
+<p><strong>注意:</strong></p>
+<ul>
+<li>蛮力算法处理达到多项式时间的问题用分治法可以有效地降低处理时间。例如：用蛮力算法解决ClosestPair问题时间复杂度为$ O(n^2) $，而采用分治法时间复杂度可以降低为O(nlogn)。</li>
+<li>结合随机抽样的分治法也可以有效的降低时间复杂度。</li>
+</ul>
+<h1 id="分治法的三大步骤"><a href="#分治法的三大步骤" class="headerlink" title="分治法的三大步骤"></a>分治法的三大步骤</h1><ol>
+<li><strong>Divide：</strong> 将原问题划分为多个子问题</li>
+<li><strong>Conquer：</strong> 采用递归方法解决所划分的子问题</li>
+<li><strong>Combine：</strong> 将子问题的解合并成为原始问题的解</li>
+</ol>
+<h2 id="具体方法"><a href="#具体方法" class="headerlink" title="具体方法"></a>具体方法</h2><p>要看能否采用分治的方法来解决所遇到的问题，首要的思路就是要看问题的输入以及输出。<br>首先要观察问题的输入部分，看是否能够将原始问题分解为具有相同结构但是更小的子问题。通常问题的输入部分如果是以下集中数据结构的话是很容易将原始问题分解为子问题的。</p>
+<ul>
+<li>n个元素的数组</li>
+<li>矩阵</li>
+<li>n个元素的集和</li>
+<li>树</li>
+<li>有向无环图</li>
+<li>普通图</li>
+</ul>
+<p>接下来要观察问题的输出部分，想办法将容易求解出的子问题的解组合构成原问题的解。</p>
+<h1 id="分治法应用实例"><a href="#分治法应用实例" class="headerlink" title="分治法应用实例"></a>分治法应用实例</h1><h2 id="排序问题"><a href="#排序问题" class="headerlink" title="排序问题"></a>排序问题</h2><div class="note default"><p><strong>INPUT:</strong> An array of n integers, denoted as A[0..n-1];<br><strong>OUTPUT:</strong> The elements of A in increasing order.</p></div>
+<h3 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h3><p>将数组A[0..n-1]划分成为n-1长度的数组A[0..n-1]和一个元素：很容易可以看出A[0..n-2]与A[0..n-1]结构形式相同就是数组大小元素数量不同；因此将A[0..n-2]进行排序就构成了原问题的子问题。我们用分治的方法<br>对A[0..n-2]进行排序最终就可以将原问题A[0..n-1]进行排序。<br><img src="/2020/02/15/分治法-Divide and Conquer/markdown-img-paste-20190128165634170.png" alt="原问题与子问题"><br><strong>插入排序</strong>的基本思想即为想要将A[0..n-1]进行排序，就是要将元素A[n-1]放入已经排好序的A[0..n-2]个元素之中，这可以通过将A[n-1]与已经排好序的A[0..n-2]数组中所有的元素进行对比插入即可。<br><strong>插入排序伪代码：</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">InsertionSort(A, n)</span><br><span class="line"><span class="keyword">for</span> j=<span class="number">0</span> to n<span class="number">-1</span> do</span><br><span class="line">  key = A[j];</span><br><span class="line">  i=j<span class="number">-1</span>;</span><br><span class="line">  <span class="keyword">while</span> i&gt;=<span class="number">0</span> <span class="keyword">and</span> A[i]&gt;key do</span><br><span class="line">    A[i+<span class="number">1</span>]=A[i];</span><br><span class="line">    i--;</span><br><span class="line">  end <span class="keyword">while</span></span><br><span class="line">  A[i+<span class="number">1</span>]=key;</span><br><span class="line">end <span class="keyword">for</span></span><br></pre></td></tr></table></figure></p>
+<p>操作过程示例图如下：<br><img src="/2020/02/15/分治法-Divide and Conquer/markdown-img-paste-20190128172050106.png" alt="插入排序具体过程图示"><br><strong>插入排序时间复杂度</strong><br>$$ T(n)=T(n-1)+O(n)=O(n^2) $$<br>由于子问题的规模减小过于缓慢（一个一个元素的递减），导致产生二次方时间复杂度。</p>
+<h3 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h3><p>为了纠正上面的不足，在<strong>归并排序</strong>中我们将原始数组$A[0..n-1]$二分成两个数组$A[0..n/2-1]$和$A[n/2..n-1]$，所划分得到的两个数组与原数组都有相同的形式，但是规模更小、缩减速度更快。因此将$A[0..n/2-1]$和$A[n/2..n-1]$进行排序构成了原问题的两个子问题。我们可以通过应用<strong>分治法</strong>将划分的两个子数组进行排序而后达到将原问题排序的目的。<br><img src="/2020/02/15/分治法-Divide and Conquer/markdown-img-paste-20190128174110331.png" alt="归并排序二分原问题图示"><br><strong>归并排序伪代码：</strong><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">MergeSort(A,l,r)</span><br><span class="line"><span class="comment">//将数组A[l..r]中的元素进行排序</span></span><br><span class="line"><span class="keyword">if</span> l&lt;r then</span><br><span class="line">  m=(l+r)/<span class="number">2</span>;<span class="comment">//m denotes the middle point</span></span><br><span class="line">  MergeSort(A,l,m);</span><br><span class="line">  MergeSort(A,m+<span class="number">1</span>,r);</span><br><span class="line">  Merge(A,l,m,r); <span class="comment">//Combining the sorted arrays</span></span><br><span class="line"><span class="built_in">end</span> <span class="keyword">if</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Merge(A,l,m,r)</span><br><span class="line"><span class="comment">//Merge A[l..m] (denoted as L) and A[m + 1..r] (denoted as R).</span></span><br><span class="line">i = <span class="number">0</span>; j = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> k = l to r <span class="keyword">do</span></span><br><span class="line">  <span class="keyword">if</span> L[i] &lt; R[j] then</span><br><span class="line">    A[k] = L[i];</span><br><span class="line">    i++;</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    A[k] = R[j];</span><br><span class="line">    j++;</span><br><span class="line">  <span class="built_in">end</span> <span class="keyword">if</span></span><br><span class="line"><span class="built_in">end</span> <span class="keyword">for</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2020/02/15/分治法-Divide and Conquer/markdown-img-paste-20190128175150117.png" alt="归并排序过程图示"><br><strong>归并排序时间复杂度</strong><br><strong>归并排序</strong>各部分操作所用时间如下图所示：<br><img src="/2020/02/15/分治法-Divide and Conquer/markdown-img-paste-20190128183003770.png" alt="时间复杂度"><br><img src="/2020/02/15/分治法-Divide and Conquer/markdown-img-paste-20190128183206936.png" alt="时间复杂度公式"><br><img src="/2020/02/15/分治法-Divide and Conquer/markdown-img-paste-20190128183320337.png" alt="时间复杂度计算过程"><br>$$T(n)=O(nlogn)$$</p>
+<h4 id="归并排序应用-逆序数对统计-CountingInversion"><a href="#归并排序应用-逆序数对统计-CountingInversion" class="headerlink" title="归并排序应用-逆序数对统计(CountingInversion)"></a>归并排序应用-逆序数对统计(CountingInversion)</h4><div class="note default"><p><strong>CountingInversion problem</strong><br><strong>INPUT:</strong> An array A[0..n] with n distinct numbers;<br><strong>OUTPUT:</strong> the number of inversions. A pair of indices i and j constitutes an inversion if i &lt; j but A[i] &gt; A[j].</p></div>
+<p>倘若采用<strong>蛮力</strong>的解决方法，给定一个元素再遍历整个数组寻找在本元素之前但是大于本元素的元素个数可想而知时间复杂度为$O(n^2)$.<br>这里我们用<strong>分治法</strong>来解决这个问题。</p>
+<ol>
+<li><strong>Divide:</strong>将数组A二分成为两个数组A[0..n/2]和A[n/2..n-1]，可以通过分别统计两个子数组的逆序数对就可以知道原数组的总的逆序数对。</li>
+<li><strong>Conquer:</strong>通过回调递归来统计各个子问题（子数组）的逆序数对。</li>
+<li><strong>Combine:</strong>如果二分的两个子数组没有一定结构与<strong>蛮力</strong>方法比起来没有任何区别，所以要将每一个子数组进行排序后再进行求逆序数对，这样可以有效地降低时间复杂度。</li>
+</ol>
+<p><strong>CountingInversion伪代码如下：</strong><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">Sort-<span class="keyword">and</span>-Count(A)</span><br><span class="line">Divide A into two sub-sequences L <span class="keyword">and</span> R;</span><br><span class="line">(RC_L,L) = Sort-<span class="keyword">and</span>-Count(L);</span><br><span class="line">(RC_R,R) = Sort-<span class="keyword">and</span>-Count(R);</span><br><span class="line">(C,A) = Merge-<span class="keyword">and</span>-Count(L,R);</span><br><span class="line"><span class="keyword">return</span> (RC = RCL + RCR + C;A);</span><br><span class="line"></span><br><span class="line">Merge-<span class="keyword">and</span>-Count(L,R)</span><br><span class="line">RC=<span class="number">0</span>;i=<span class="number">0</span>;j=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> k = <span class="number">0</span> to ∥L∥ + ∥R∥<span class="number">-1</span> <span class="keyword">do</span></span><br><span class="line">  <span class="keyword">if</span> L[i] &gt; R[j] then</span><br><span class="line">    A[k] = R[j];</span><br><span class="line">    j++;</span><br><span class="line">    RC+=(∥L∥-i);</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    A[k] = L[i];</span><br><span class="line">    i++;</span><br><span class="line">  <span class="built_in">end</span> <span class="keyword">if</span></span><br><span class="line"><span class="built_in">end</span> <span class="keyword">for</span></span><br><span class="line"><span class="keyword">return</span> (RC,A);</span><br></pre></td></tr></table></figure></p>
+<p><strong>时间复杂度</strong><br>该程序就是在归并排序的基础上进行处理，时间复杂度就是<strong>归并排序</strong>的时间复杂度：<br>$$T(n) = 2T(n/2)+O(n)=O(nlogn)$$</p>
+<h3 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h3><p>上边给出的排序算法是将数组依据下标进行二分，<strong>快速排序</strong>是采用用<strong>元素数值</strong>来进行二分，大于该值的在左边小于该值的在该值右边。<br><strong>QuickSort伪代码：</strong><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">QuickSort(A)</span><br><span class="line">R = &#123;&#125;; L = &#123;&#125;;</span><br><span class="line">Choose a pivot A[j] uniformly at <span class="built_in">random</span>;</span><br><span class="line"><span class="keyword">for</span> i = <span class="number">0</span> to n<span class="number">-1</span> <span class="keyword">do</span></span><br><span class="line">  Put A[i] in L <span class="keyword">if</span> A[i] &lt; A[j];</span><br><span class="line">  Put A[i] in R <span class="keyword">if</span> A[i] &gt; A[j];</span><br><span class="line"><span class="built_in">end</span> <span class="keyword">for</span></span><br><span class="line">QuickSort(L);</span><br><span class="line">QuickSort(R);</span><br><span class="line">Output L, then A[j], then R;</span><br></pre></td></tr></table></figure></p>
+<p><strong>Lomuto’s in-place algorithm</strong><br><strong>思路</strong>即为将元素交换位置，使得满足A[l。。i -1] &lt; pivot和A[i..j-1]&gt;=pivot。<br><img src="/2020/02/15/分治法-Divide and Conquer/markdown-img-paste-20190128222047876.png" alt="图示"><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">QuickSort(A,l,r)</span><br><span class="line"><span class="keyword">if</span> l &lt; r then</span><br><span class="line">  p =Partition(A,l,r) <span class="comment">//Use A[r] as pivot;</span></span><br><span class="line">  QuickSort(A,l,p<span class="number">-1</span>);</span><br><span class="line">  QuickSort(A,p+<span class="number">1</span>,r);</span><br><span class="line"><span class="built_in">end</span> <span class="keyword">if</span></span><br><span class="line"><span class="comment">//-----------------------</span></span><br><span class="line">Partition(A,l,r)</span><br><span class="line">pivot=A[r]; i = l;</span><br><span class="line"><span class="keyword">for</span> j = l to r<span class="number">-1</span> <span class="keyword">do</span></span><br><span class="line">  <span class="keyword">if</span> A[j] &lt; pivot then</span><br><span class="line">    Swap A[i] with A[j];</span><br><span class="line">    i++;</span><br><span class="line">  <span class="built_in">end</span> <span class="keyword">if</span></span><br><span class="line"><span class="built_in">end</span> <span class="keyword">for</span></span><br><span class="line">Swap A[i] with A[r]; <span class="comment">//Put pivot in its correct position</span></span><br><span class="line"><span class="keyword">return</span> i;</span><br></pre></td></tr></table></figure></p>
+<p><strong>快速排序</strong>采用的随机确定<strong>枢纽元素</strong>很简单也很高效。<br><strong>时间复杂度</strong></p>
+<ul>
+<li><strong>Worst case:</strong>每一次迭代都是选择的最小或者最大的元素作为<strong>枢纽元素</strong>。子问题的规模大小呈线性递减。<br>$$T(n)=T(n-1)+O(n)=O(n^2)$$</li>
+<li><strong>Best case:</strong>每一次迭代都是恰好选择中位数作为<strong>枢纽元素</strong>。子问题的规模呈指数递减。<br>$$T(n)=2T(n/2)+O(n)=O(nlogn)$$</li>
+<li><strong>Most case:</strong>大多数情况下都是与中位数比较接近。所以时间复杂度仍为：<br>$$T(n)=O(nlogn)$$</li>
+</ul>
+<p>综上，我们可以知道对于<strong>快速排序</strong>来说，好的<strong>枢纽元素</strong>的选择至关重要，原始的QuickSort算法并不稳定，接下来对此算法进行改进。</p>
+<h3 id="快速排序改进"><a href="#快速排序改进" class="headerlink" title="快速排序改进"></a>快速排序改进</h3><p>我们知道<strong>快速排序</strong>的<strong>枢纽元素</strong>越接近中位数排序效果就越好，所以这里就加条件进行限制，使得所划分的元素最终左右两侧的元素数量不能小于整个数组长度的$1\/4$。这样可以有效的避免出现子问题（子数组）线性递减的情况。<br><img src="/2020/02/15/分治法-Divide and Conquer/markdown-img-paste-20190128215718724.png" alt="best pivot"><br><strong>伪代码如下</strong><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">ModifiedQuickSort(A)</span><br><span class="line"><span class="keyword">while</span> TRUE <span class="keyword">do</span></span><br><span class="line">  Choose a pivot A[j] uniformly at <span class="built_in">random</span>;</span><br><span class="line">  L = &#123;&#125;; R = &#123;&#125;;</span><br><span class="line">  <span class="keyword">for</span> i = <span class="number">0</span> to n<span class="number">-1</span> <span class="keyword">do</span></span><br><span class="line">    Put A[i] in L <span class="keyword">if</span> A[i] &lt; A[j];</span><br><span class="line">    Put A[i] in R <span class="keyword">if</span> A[i] &gt; A[j];</span><br><span class="line">  <span class="built_in">end</span> <span class="keyword">for</span></span><br><span class="line">  <span class="keyword">if</span> ∥L∥ &gt;= n/<span class="number">4</span> <span class="keyword">and</span> ∥R∥ &lt;= n then</span><br><span class="line">    <span class="keyword">break</span>; <span class="comment">//Axed proportion of elements fall both below and above the pivot;</span></span><br><span class="line">  <span class="built_in">end</span> <span class="keyword">if</span></span><br><span class="line"><span class="built_in">end</span> <span class="keyword">while</span></span><br><span class="line">ModifiedQuickSort(L);</span><br><span class="line">ModifiedQuickSort(R);</span><br><span class="line">Output L, then A[j], <span class="keyword">and</span>finally R;</span><br></pre></td></tr></table></figure></p>
+<p>以上改进算法虽然避免了出现子问题先行递减的情况，但是加了循环，如果不能够满足条件就会一直循环，所以相比于<strong>原快速排序</strong>要慢。</p>
+<h2 id="查找问题"><a href="#查找问题" class="headerlink" title="查找问题"></a>查找问题</h2><h3 id="快速排序的应用-查找数组中第k小的元素"><a href="#快速排序的应用-查找数组中第k小的元素" class="headerlink" title="快速排序的应用-查找数组中第k小的元素"></a>快速排序的应用-查找数组中第k小的元素</h3><div class="note default"><p><strong>Select the k-th smallest items in an array</strong><br><strong>INPUT:</strong> An array A[0..n] and a number k&lt;n;<br><strong>OUTPUT:</strong> The k-th smallest item in general case (or the median of A as a special case).</p></div>
+<p>当所给的数k很小的时候很简单，但是当k恰好为数组长度的中位数的时候就不那么简单了。要想找到第k小的值通常我们的做法就是将数组排序，排序过程的时间复杂度为$O(nlogn)$。通过应用分而治之的思想我们可以找到一个更加快速的解决方法。<br>其采用了折半查找的方法，通过不断对半缩小查找区间来加快查找速度。<br><strong>伪代码如下</strong><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Select（A,k）</span><br><span class="line">Choose an element A[i] from A as a pivot;</span><br><span class="line">S+ = &#123;&#125;; S- = &#123;&#125;;</span><br><span class="line"><span class="keyword">for</span> all element A[j] in A <span class="keyword">do</span></span><br><span class="line">  <span class="keyword">if</span> A[j] &gt; A[i] then</span><br><span class="line">    S+ = S+ + A[j];</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    S- = S- + A[j];</span><br><span class="line">  <span class="built_in">end</span> <span class="keyword">if</span></span><br><span class="line"><span class="built_in">end</span> <span class="keyword">for</span></span><br><span class="line"><span class="keyword">if</span> |S-| = k - <span class="number">1</span> then</span><br><span class="line">  <span class="keyword">return</span> A[i];</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span> |S-| &gt; k - <span class="number">1</span> then</span><br><span class="line">  <span class="keyword">return</span> Select(S-; k);</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">  <span class="keyword">return</span> Select(S+; k - |S-|<span class="number">-1</span>);</span><br><span class="line"><span class="built_in">end</span> <span class="keyword">if</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>可运行代码如下：</strong><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> A[<span class="number">5000001</span>];</span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">GetPivot</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> a[],<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">Max_k</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> a[],<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">GetPivot</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> a[],<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> value = a[l];</span><br><span class="line">    <span class="keyword">int</span> i,j;</span><br><span class="line">    i = l;</span><br><span class="line">    j = r;</span><br><span class="line">    <span class="keyword">while</span>(i&lt;j)&#123;</span><br><span class="line">        <span class="keyword">while</span>(i&lt;j&amp;&amp;a[j]&lt;=value)&#123;</span><br><span class="line">            --j;</span><br><span class="line">        &#125;</span><br><span class="line">        a[i]=a[j];</span><br><span class="line">        <span class="keyword">while</span>(i&lt;j&amp;&amp;a[i]&gt;=value)&#123;</span><br><span class="line">            ++i;</span><br><span class="line">        &#125;</span><br><span class="line">        a[j]=a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    a[j]=value;</span><br><span class="line">    <span class="keyword">return</span> j;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">Max_k</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> a[],<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> k)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> tmp = GetPivot(a,l,r);</span><br><span class="line">    <span class="keyword">if</span>(tmp==k)&#123;</span><br><span class="line">        <span class="keyword">return</span> a[tmp];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(tmp&lt;k)&#123;</span><br><span class="line">        Max_k(a,tmp+<span class="number">1</span>,r,k);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        Max_k(a,l,tmp<span class="number">-1</span>,k);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n,k;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;k);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%lld"</span>,&amp;A[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> max_k = Max_k(A,<span class="number">0</span>,n<span class="number">-1</span>,k<span class="number">-1</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,A[k<span class="number">-1</span>]);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>与前面所学的快速排序不同这里的折半查找只需要考虑其中一个子问题即可，不需要遍历所有的子问题，所以此方法所需的时间还要少。</p>
+<h2 id="平面最小距离点对"><a href="#平面最小距离点对" class="headerlink" title="平面最小距离点对"></a>平面最小距离点对</h2><div class="note default"><p><strong>ClosestPair problem</strong><br><strong>INPUT:</strong> n points in a plane;<br><strong>OUTPUT:</strong> The pair with the least Euclidean distance.</p></div>
+<p><strong>如下图所示：</strong><br><img src="/2020/02/15/分治法-Divide and Conquer/markdown-img-paste-20190225203719922.png" alt="ClosestPair"></p>
+<ul>
+<li><strong>1D case:</strong> 通过一次快速排序即可轻松解决，时间复杂度为$O(nlogn)$。</li>
+<li><strong>2D case:</strong> 蛮力方法即为遍历所有点对，求出其最小点对距离值，当然时间复杂度即为$O(n^2)$。<br><strong>存不存在小于时间复杂度$O(n^2)$的方法就能查找出平面上的最小距离点对呢？答案是肯定的，采用分而治之的思想就能有效的降低时间复杂度。</strong></li>
+</ul>
+<ol>
+<li><strong>Divide：</strong>将平面划分为左右两半，每一半平面内的点数目相同。（这是很容易实现的，只需要将平面点按照$x$坐标排序，然后对半评分即可）。<br><img src="/2020/02/15/分治法-Divide and Conquer/markdown-img-paste-20190225204921163.png" alt="divide"></li>
+<li><strong>Conquer:</strong> 分别找出两部分平面中最小的点对距离。<br><img src="/2020/02/15/分治法-Divide and Conquer/markdown-img-paste-20190225205157747.png" alt="conquer"></li>
+<li><strong>combine:</strong> 考虑一个点在左半边另一个点在右半边的情况，然后与前面找到的两个字问题最小点对距离进行对比即可。<br><img src="/2020/02/15/分治法-Divide and Conquer/markdown-img-paste-20190225205548905.png" alt="combine"></li>
+</ol>
+<p>在求边界上最小点对距离时可以观察到，我们只需遍历在边界上的一条满足距离的条带内的点对距离即可。这个矩形窄带的宽度即为左右两部分平面所查找出的两个最小点对距离的最小值。<br><img src="/2020/02/15/分治法-Divide and Conquer/markdown-img-paste-20190225210214495.png" alt="observation"><br>另外，$y$轴方向同样也满足这一道理。为消除不必要的计算时间我们规定只需将某一点对比在以$y$轴排序的基础上紧接其后的11个点即可，而不必与窄带中所有点对比求距离。<br><img src="/2020/02/15/分治法-Divide and Conquer/markdown-img-paste-2019022521074168.png" alt="11"><br><strong>伪代码如下：</strong><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">ClosestPair(pl,...,pr)</span><br><span class="line"><span class="comment">//Tofind the closest points within (pl,...,pr). Here we assume that pl,...,pr have already been sorted according to x-coordinate;</span></span><br><span class="line"><span class="keyword">if</span> r - l == <span class="number">1</span> then</span><br><span class="line">  <span class="keyword">return</span> d(pl,pr);</span><br><span class="line"><span class="built_in">end</span> <span class="keyword">if</span></span><br><span class="line">Use the x-coordinate of p&#123;(l+r)/<span class="number">2</span>&#125;to divide pl,...,pr into two halves;</span><br><span class="line">S1 = ClosestPair(LeftHalf);</span><br><span class="line">S2 = ClosestPair(RightHalf);</span><br><span class="line">S = <span class="built_in">min</span>(S1; S2);</span><br><span class="line">Sort points within the <span class="number">2</span>S wide strip by y -coordinate;</span><br><span class="line">Scan points in y-order <span class="keyword">and</span> calculate distance between each <span class="built_in">point</span> with its next <span class="number">11</span> neighbors. Update S <span class="keyword">if</span>nding a distance less than S;</span><br></pre></td></tr></table></figure></p>
+<p><strong>可运行代码如下：</strong><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;float.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;math.h&gt;</span></span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Point</span>&#123;</span></span><br><span class="line">    <span class="keyword">double</span> x, y;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Point P[<span class="number">100000</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">cX</span><span class="params">(<span class="keyword">const</span> <span class="keyword">void</span>* a, <span class="keyword">const</span> <span class="keyword">void</span>* b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Point *p1 = (Point *)a, *p2 = (Point *)b;</span><br><span class="line">    <span class="keyword">return</span> (p1-&gt;x - p2-&gt;x);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">cY</span><span class="params">(<span class="keyword">const</span> <span class="keyword">void</span>* a, <span class="keyword">const</span> <span class="keyword">void</span>* b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Point *p1 = (Point *)a, *p2 = (Point *)b;</span><br><span class="line">    <span class="keyword">return</span> (p1-&gt;y - p2-&gt;y);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">Dist</span><span class="params">(Point p1, Point p2)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">sqrt</span>( (p1.x - p2.x)*(p1.x - p2.x) + (p1.y - p2.y)*(p1.y - p2.y));</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">bF</span><span class="params">(Point P[], <span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">double</span> <span class="built_in">min</span> = FLT_MAX;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i)</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = i+<span class="number">1</span>; j &lt; n; ++j)</span><br><span class="line">            <span class="keyword">if</span> (Dist(P[i], P[j]) &lt; <span class="built_in">min</span>)</span><br><span class="line">                <span class="built_in">min</span> = Dist(P[i], P[j]);</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">min</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">Min</span><span class="params">(<span class="keyword">double</span> x, <span class="keyword">double</span> y)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (x &lt; y)? x : y;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">stripClosest</span><span class="params">(Point strip[], <span class="keyword">int</span> <span class="built_in">size</span>, <span class="keyword">double</span> d)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">double</span> Min = d;</span><br><span class="line">    qsort(strip, <span class="built_in">size</span>, <span class="keyword">sizeof</span>(Point), cY);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="built_in">size</span>; ++i)</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = i+<span class="number">1</span>; j &lt; <span class="built_in">size</span> &amp;&amp; (strip[j].y - strip[i].y) &lt; Min; ++j)</span><br><span class="line">            <span class="keyword">if</span> (Dist(strip[i],strip[j]) &lt; Min)</span><br><span class="line">                Min = Dist(strip[i], strip[j]);</span><br><span class="line">    <span class="keyword">return</span> Min;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">closestUtil</span><span class="params">(Point P[], <span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n &lt;= <span class="number">3</span>)</span><br><span class="line">        <span class="keyword">return</span> bF(P, n);</span><br><span class="line">    <span class="keyword">int</span> mid = n/<span class="number">2</span>;</span><br><span class="line">    Point midPoint = P[mid];</span><br><span class="line">    <span class="keyword">double</span> dl = closestUtil(P, mid);</span><br><span class="line">    <span class="keyword">double</span> dr = closestUtil(P + mid, n-mid);</span><br><span class="line">    <span class="keyword">double</span> d = Min(dl, dr);</span><br><span class="line"></span><br><span class="line">    Point strip[n];</span><br><span class="line">    <span class="keyword">int</span> j = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">abs</span>(P[i].x - midPoint.x) &lt; d)</span><br><span class="line">            strip[j] = P[i], j++;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> Min(d, stripClosest(strip, j, d) );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">closest</span><span class="params">(Point P[], <span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    qsort(P, n, <span class="keyword">sizeof</span>(Point), cX);</span><br><span class="line">    <span class="keyword">return</span> closestUtil(P, n);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">    <span class="keyword">if</span>(n&lt;<span class="number">2</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%lf%lf"</span>,&amp;P[i].x,&amp;P[i].y);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%.2lf\n"</span>, closest(P, n));</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>算法时间复杂度为：</strong><br>$$T(n)=2T(n/2)+O(n)=O(nlogn)$$</p>
+<p><strong>具体流程图示如下：</strong><br><img src="/2020/02/15/分治法-Divide and Conquer/markdown-img-paste-20190225211701102.png" alt="1"><br><img src="/2020/02/15/分治法-Divide and Conquer/markdown-img-paste-20190225211848917.png" alt="2"><br><img src="/2020/02/15/分治法-Divide and Conquer/markdown-img-paste-20190225211943716.png" alt="3"><br><img src="/2020/02/15/分治法-Divide and Conquer/markdown-img-paste-20190225212042137.png" alt="4"></p>
+
+      
+    </div>
+    
+    
+    
+
+
+    
+      <div>
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束-------------</div>
+    
+</div>
+
+      </div>
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="KingdomW 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/算法/" rel="tag"><i class="fa fa-tag"></i> 算法</a>
+          
+            <a href="/tags/分治法/" rel="tag"><i class="fa fa-tag"></i> 分治法</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/02/15/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div id="gitalk-container">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="KingdomW">
+            
+              <p class="site-author-name" itemprop="name">KingdomW</p>
+              <p class="site-description motion-element" itemprop="description">一个人可以走很快但是一群人可以走更远</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/KingdomW" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:wuwenyuan18@mails.ucas.ac.cn" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://caojiangxia.github.io/" title="caojiangxia" target="_blank">caojiangxia</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#分治法典型应用"><span class="nav-number">1.</span> <span class="nav-text">分治法典型应用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分治法的三大步骤"><span class="nav-number">2.</span> <span class="nav-text">分治法的三大步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#具体方法"><span class="nav-number">2.1.</span> <span class="nav-text">具体方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分治法应用实例"><span class="nav-number">3.</span> <span class="nav-text">分治法应用实例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#排序问题"><span class="nav-number">3.1.</span> <span class="nav-text">排序问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#插入排序"><span class="nav-number">3.1.1.</span> <span class="nav-text">插入排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#归并排序"><span class="nav-number">3.1.2.</span> <span class="nav-text">归并排序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#归并排序应用-逆序数对统计-CountingInversion"><span class="nav-number">3.1.2.1.</span> <span class="nav-text">归并排序应用-逆序数对统计(CountingInversion)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#快速排序"><span class="nav-number">3.1.3.</span> <span class="nav-text">快速排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#快速排序改进"><span class="nav-number">3.1.4.</span> <span class="nav-text">快速排序改进</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查找问题"><span class="nav-number">3.2.</span> <span class="nav-text">查找问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#快速排序的应用-查找数组中第k小的元素"><span class="nav-number">3.2.1.</span> <span class="nav-text">快速排序的应用-查找数组中第k小的元素</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#平面最小距离点对"><span class="nav-number">3.3.</span> <span class="nav-text">平面最小距离点对</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">KingdomW</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user">访问人数</i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye">总访问量</i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+   <script type="text/javascript">
+        var gitalk = new Gitalk({
+          clientID: '522ae7697b981d636492',
+          clientSecret: '23c2a26f8ed4013860021b45ead13cda9b864f08',
+          repo: 'KingdomW.github.io',
+          owner: 'KingdomW',
+          admin: ['KingdomW'],
+          id: location.pathname,
+          distractionFreeMode: 'true'
+        })
+        gitalk.render('gitalk-container')           
+       </script>
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("w6q5R0q518RTuVRqFQKLYeYw-gzGzoHsz", "lA0R6kwobewxG1lXzkjcwuje");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+  <script type="text/javascript">
+  wpac_init = window.wpac_init || [];
+  wpac_init.push({widget: 'Rating', id: ,
+    el: 'wpac-rating',
+    color: 'fc6423'
+  });
+  (function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = '//embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+  </script>
+
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
